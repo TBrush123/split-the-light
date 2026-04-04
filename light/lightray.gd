@@ -38,7 +38,6 @@ func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
 		else:
 			Particles.emitting = false
 			points.append(current_origin + current_dir * 1000)
-
 			break
 	
 	return points
