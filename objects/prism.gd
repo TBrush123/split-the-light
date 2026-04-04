@@ -25,6 +25,7 @@ func _ready():
 		rays[ray].Particles.amount = 20
 		rays[ray].Rayline.modulate = output_colors[ray]
 		rays[ray].ray_width = 6
+		rays[ray].deactivate()
 
 
 func _physics_process(_delta):

@@ -63,16 +63,23 @@ func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
 			break
 		elif result and result.collider.is_in_group("prism"):
 			var prism = result.collider
+			var hit_normal = result.normal # The direction the surface is "facing"
 			points.append(result.position)
+
+			var prism_bottom_direction = prism.global_transform.y 
+
+			var side_dot = hit_normal.dot(prism_bottom_direction)
+
+			if side_dot > 0.9: 
+				if prism.has_method("receive_hit"):
+					prism.receive_hit()
+			else:
+				Particles.global_position = result.position
+				Particles.emitting = true
+				Particles.direction = -current_dir
+				print("Hit a side other than the bottom")
 			
-			# Just call the function; the prism will handle its own state
-			if prism.has_method("receive_hit"):
-				prism.receive_hit()
-			
-			# Optional: Visuals for the hit point
-			Particles.global_position = result.position
-			Particles.emitting = true
-			break
+			points.append(result.position)
 		else:
 			Particles.emitting = false
 			points.append(current_origin + current_dir * 1000)

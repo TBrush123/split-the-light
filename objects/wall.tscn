@@ -12,6 +12,6 @@ gravity_scale = 0.0
 scale = Vector2(1.172126, 0.17667702)
 texture = ExtResource("1_r71v4")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933675256 groups=["absorptive"]]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933675256]
 shape = SubResource("RectangleShape2D_hklci")
 debug_color = Color(0.5123433, 0.21138594, 0, 0.41960785)
