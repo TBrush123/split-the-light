@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0m7nwisvdij7"]
 
-[ext_resource type="Texture2D" uid="uid://bfcnh176vm8e6" path="res://icon.svg" id="1_r71v4"]
+[ext_resource type="Texture2D" uid="uid://qjdhfl5mey6e" path="res://assets/wall.png" id="1_r71v4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hklci"]
 size = Vector2(150, 20)
@@ -9,7 +9,8 @@ size = Vector2(150, 20)
 gravity_scale = 0.0
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1410549680]
-scale = Vector2(1.172126, 0.17667702)
+position = Vector2(-9.536743e-07, -7.1525574e-07)
+scale = Vector2(0.96774197, 0.8000001)
 texture = ExtResource("1_r71v4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933675256 groups=["absorptive"]]

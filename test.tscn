@@ -5,28 +5,39 @@
 [ext_resource type="PackedScene" uid="uid://xlyjxvrtc5ht" path="res://objects/mirror.tscn" id="3_6uqi0"]
 [ext_resource type="PackedScene" uid="uid://dpe5v8oeaxfqq" path="res://objects/light_reciever.tscn" id="4_ppyta"]
 [ext_resource type="PackedScene" uid="uid://dq3qou8ltweud" path="res://objects/prism.tscn" id="5_ykrsh"]
+[ext_resource type="PackedScene" uid="uid://dmhe7qgloqnyc" path="res://walls.tscn" id="6_g14j6"]
 
 [node name="Test" type="Node2D" unique_id=1263500416]
 
 [node name="Wall" parent="." unique_id=1110037336 instance=ExtResource("2_8uh7m")]
-position = Vector2(819, 392.99997)
-rotation = 0.8648014
+position = Vector2(460, 96.00001)
+rotation = 1.5688658
+
+[node name="Wall2" parent="." unique_id=1254159453 instance=ExtResource("2_8uh7m")]
+position = Vector2(460, 246)
+rotation = 1.5688658
 
 [node name="Mirror" parent="." unique_id=1823625752 instance=ExtResource("3_6uqi0")]
-position = Vector2(324, 343)
+position = Vector2(176, 453.00003)
 rotation = 1.2394667
 
 [node name="Mirror2" parent="." unique_id=169471480 instance=ExtResource("3_6uqi0")]
-position = Vector2(166, 396)
+position = Vector2(383, 105)
+rotation = 1.2394667
+
+[node name="Mirror3" parent="." unique_id=709488274 instance=ExtResource("3_6uqi0")]
+position = Vector2(436, 474)
 rotation = 1.2394667
 
 [node name="RigidBody2D" parent="." unique_id=1257106951 instance=ExtResource("4_ppyta")]
-position = Vector2(646, 240)
+position = Vector2(808, 65)
 
 [node name="Laser" parent="." unique_id=1321595995 instance=ExtResource("1_37kl0")]
-position = Vector2(47, 68)
+position = Vector2(83, 85)
 active = true
 
 [node name="Prism" parent="." unique_id=1285278337 instance=ExtResource("5_ykrsh")]
-position = Vector2(357.37488, 207.86423)
+position = Vector2(830.99994, 307.00006)
 rotation = 0.9844192
+
+[node name="walls" parent="." unique_id=2029995915 instance=ExtResource("6_g14j6")]
