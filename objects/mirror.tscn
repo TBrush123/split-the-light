@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://xlyjxvrtc5ht"]
+
+[ext_resource type="Texture2D" uid="uid://bfcnh176vm8e6" path="res://icon.svg" id="1_pujeo"]
+[ext_resource type="Script" uid="uid://c4k4poak3wgvh" path="res://objects/mirror_drag.gd" id="2_vknrs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jcrwp"]
+size = Vector2(144, 20)
+
+[node name="Mirror" type="RigidBody2D" unique_id=1823625752 groups=["reflective"]]
+gravity_scale = 0.0
+script = ExtResource("2_vknrs")
+
+[node name="Object" type="Sprite2D" parent="." unique_id=846934941]
+position = Vector2(0, -2)
+scale = Vector2(1.1199974, 0.17852947)
+texture = ExtResource("1_pujeo")
+
+[node name="Button" type="Button" parent="Object" unique_id=1076831116]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1136351373]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_jcrwp")
+debug_color = Color(0.5089948, 0.4697039, 0.4880954, 0.41960785)
+
+[connection signal="button_down" from="Object/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Object/Button" to="." method="_on_button_button_up"]

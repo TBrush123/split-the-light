@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bvdgt1uhcgyor"]
+
+[ext_resource type="Script" uid="uid://kyeuje0b3phw" path="res://light/lightray.gd" id="1_ehnwn"]
+[ext_resource type="Texture2D" uid="uid://bq0tmtkqib22c" path="res://assets/particle.png" id="2_a8vku"]
+
+[node name="Laser" type="Node2D" unique_id=1321595995 node_paths=PackedStringArray("Particles")]
+script = ExtResource("1_ehnwn")
+Particles = NodePath("CPUParticles2D")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=748454399]
+width = 12.0
+antialiased = true
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1302259856]
+amount = 67
+texture = ExtResource("2_a8vku")
+lifetime = 0.2
+speed_scale = 0.3
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 15.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 300.0
+radial_accel_min = 60.0
+radial_accel_max = 120.0
+scale_amount_min = 0.4
+scale_amount_max = 0.6

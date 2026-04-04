@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://x8k5u2y72v0"]
+
+[ext_resource type="PackedScene" uid="uid://bvdgt1uhcgyor" path="res://light/laser.tscn" id="1_37kl0"]
+[ext_resource type="PackedScene" uid="uid://d0m7nwisvdij7" path="res://objects/wall.tscn" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://xlyjxvrtc5ht" path="res://objects/mirror.tscn" id="3_6uqi0"]
+
+[node name="Test" type="Node2D" unique_id=1263500416]
+
+[node name="Laser" parent="." unique_id=1321595995 instance=ExtResource("1_37kl0")]
+position = Vector2(47, 68)
+
+[node name="Wall" parent="." unique_id=1110037336 instance=ExtResource("2_8uh7m")]
+position = Vector2(819, 392.99997)
+rotation = 0.8648014
+
+[node name="Mirror" parent="." unique_id=1823625752 instance=ExtResource("3_6uqi0")]
+position = Vector2(536, 60.000008)
+rotation = 1.2394667
+
+[node name="Mirror2" parent="." unique_id=169471480 instance=ExtResource("3_6uqi0")]
+position = Vector2(166, 396)
+rotation = 1.2394667

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://d0m7nwisvdij7"]
+
+[ext_resource type="Texture2D" uid="uid://bfcnh176vm8e6" path="res://icon.svg" id="1_r71v4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hklci"]
+size = Vector2(150, 20)
+
+[node name="Wall" type="RigidBody2D" unique_id=1110037336 groups=["absorptive"]]
+gravity_scale = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1410549680]
+scale = Vector2(1.172126, 0.17667702)
+texture = ExtResource("1_r71v4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=933675256 groups=["absorptive"]]
+shape = SubResource("RectangleShape2D_hklci")
+debug_color = Color(0.5123433, 0.21138594, 0, 0.41960785)
