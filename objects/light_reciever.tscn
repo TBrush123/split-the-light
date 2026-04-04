@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dpe5v8oeaxfqq"]
+
+[ext_resource type="Texture2D" uid="uid://ckcqmd8yso1p1" path="res://assets/HEPrZ7jaAAASEWu.jpg" id="1_87plc"]
+[ext_resource type="Script" uid="uid://bkq4lgt57tq7g" path="res://objects/light_reciever.gd" id="1_sccfu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_87plc"]
+
+[node name="RigidBody2D" type="RigidBody2D" unique_id=1257106951 groups=["receiver"]]
+position = Vector2(0, 15)
+gravity_scale = 0.0
+script = ExtResource("1_sccfu")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=49408339]
+scale = Vector2(0.20614117, 0.16739193)
+texture = ExtResource("1_87plc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=447456083]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_87plc")
+debug_color = Color(0.7921569, 0.7529412, 0, 0.34509805)

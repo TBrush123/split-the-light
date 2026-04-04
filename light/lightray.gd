@@ -4,6 +4,7 @@ extends Node2D
 var current_points = []
 var target_points = []
 var time := 0.0
+var hit_receivers = []
 
 func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
 	var space = get_world_2d().direct_space_state
@@ -35,6 +36,16 @@ func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
 			Particles.emitting = true
 			Particles.direction = -current_dir
 			break
+		elif result and result.collider.is_in_group("receiver"):
+			print("Receiver hit")
+			points.append(result.position)
+			if not hit_receivers.has(result.collider):
+				hit_receivers.append(result.collider)
+				result.collider.activate()
+			Particles.global_position = result.position
+			Particles.emitting = true
+			Particles.direction = -current_dir
+			break
 		else:
 			Particles.emitting = false
 			points.append(current_origin + current_dir * 1000)
@@ -47,6 +58,15 @@ func _draw():
 	var direction = Vector2(1, 0)
 	var points = cast_laser(origin, direction)
 	$Line2D.points = cast_laser(global_position, Vector2.RIGHT)
+
+func update_receivers():
+	for r in get_tree().get_nodes_in_group("receiver"):
+		r.deactivate()
+	
+	for r in hit_receivers:
+		r.activate()
+	
+	hit_receivers.clear()
 
 func _process(delta: float) -> void:
 	time += delta
@@ -62,3 +82,5 @@ func _process(delta: float) -> void:
 	
 	$Line2D.points = current_points
 	$Line2D.width = 12 + 2 * sin(time * 5)
+
+	update_receivers()
