@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d0m7nwisvdij7" path="res://objects/wall.tscn" id="2_8uh7m"]
 [ext_resource type="PackedScene" uid="uid://xlyjxvrtc5ht" path="res://objects/mirror.tscn" id="3_6uqi0"]
 [ext_resource type="PackedScene" uid="uid://dpe5v8oeaxfqq" path="res://objects/light_reciever.tscn" id="4_ppyta"]
+[ext_resource type="PackedScene" uid="uid://dq3qou8ltweud" path="res://objects/prism.tscn" id="5_ykrsh"]
 
 [node name="Test" type="Node2D" unique_id=1263500416]
 
@@ -24,3 +25,8 @@ position = Vector2(646, 240)
 
 [node name="Laser" parent="." unique_id=1321595995 instance=ExtResource("1_37kl0")]
 position = Vector2(47, 68)
+active = true
+
+[node name="Prism" parent="." unique_id=1285278337 instance=ExtResource("5_ykrsh")]
+position = Vector2(357.37488, 207.86423)
+rotation = 0.9844192

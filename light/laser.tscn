@@ -3,15 +3,17 @@
 [ext_resource type="Script" uid="uid://kyeuje0b3phw" path="res://light/lightray.gd" id="1_ehnwn"]
 [ext_resource type="Texture2D" uid="uid://bq0tmtkqib22c" path="res://assets/particle.png" id="2_a8vku"]
 
-[node name="Laser" type="Node2D" unique_id=1321595995 node_paths=PackedStringArray("Particles")]
+[node name="Laser" type="Node2D" unique_id=1321595995 node_paths=PackedStringArray("Particles", "Rayline")]
 script = ExtResource("1_ehnwn")
 Particles = NodePath("CPUParticles2D")
+Rayline = NodePath("Line2D")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=748454399]
 width = 12.0
 antialiased = true
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=1302259856]
+emitting = false
 amount = 67
 texture = ExtResource("2_a8vku")
 lifetime = 0.2

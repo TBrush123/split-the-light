@@ -1,24 +1,38 @@
+class_name LightRay
 extends Node2D
 
 @export var Particles: CPUParticles2D
+@export var Rayline: Line2D
+@export var active := false
+
+@export_group("Ray Settings")
+@export var max_bounces := 5
+@export var ray_width := 12
+@export var ray_color := Color(1, 1, 1)
+
+signal hit_prism(prism)
+signal prism_cleared
+
 var current_points = []
 var target_points = []
 var time := 0.0
 var hit_receivers = []
+var hit_prisms = []
 
 func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
 	var space = get_world_2d().direct_space_state
 	
 	var points = [origin]
 	var current_origin = origin
-	var current_dir = direction.normalized()
+	var current_dir = direction.normalized() 
 	
 	for i in range(max_bounces):
 		var query = PhysicsRayQueryParameters2D.create(
 			current_origin,
 			current_origin + current_dir * 1000
 		)
-		
+		query.exclude = [get_parent()]
+
 		var result = space.intersect_ray(query)
 		
 		if result and result.collider.is_in_group("reflective"):
@@ -41,10 +55,23 @@ func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
 			points.append(result.position)
 			if not hit_receivers.has(result.collider):
 				hit_receivers.append(result.collider)
+				emit_signal("hit_prism", result.collider)
 				result.collider.activate()
 			Particles.global_position = result.position
 			Particles.emitting = true
 			Particles.direction = -current_dir
+			break
+		elif result and result.collider.is_in_group("prism"):
+			var prism = result.collider
+			points.append(result.position)
+			
+			# Just call the function; the prism will handle its own state
+			if prism.has_method("receive_hit"):
+				prism.receive_hit()
+			
+			# Optional: Visuals for the hit point
+			Particles.global_position = result.position
+			Particles.emitting = true
 			break
 		else:
 			Particles.emitting = false
@@ -57,30 +84,50 @@ func _draw():
 	var origin = Vector2(100, 100)
 	var direction = Vector2(1, 0)
 	var points = cast_laser(origin, direction)
-	$Line2D.points = cast_laser(global_position, Vector2.RIGHT)
+	Rayline.points = cast_laser(global_position, Vector2.RIGHT)
 
 func update_receivers():
-	for r in get_tree().get_nodes_in_group("receiver"):
-		r.deactivate()
-	
+	get_tree().call_group("receiver", "deactivate")
 	for r in hit_receivers:
 		r.activate()
-	
-	hit_receivers.clear()
+func update_prisms():
+	get_tree().call_group("prism", "deactivate_prism")
+
+func activate():
+	active = true
+	print("Light ON")
+
+func deactivate():
+	active = false
+	print("Light OFF")
 
 func _process(delta: float) -> void:
 	time += delta
+	hit_receivers.clear()
+	if not active:
+		Rayline.points = []
+		return
+	
+	if hit_prisms.is_empty():
+		prism_cleared.emit()
+	else:
+		for p in hit_prisms:
+			hit_prism.emit(p)
 
-	target_points = cast_laser(global_position, Vector2.RIGHT)
+	target_points = cast_laser(global_position, global_transform.x)
 	
 	if current_points.size() != target_points.size():
-		current_points = target_points.duplicate()
+		current_points = target_points.map(func(p): return to_local(p))
 	else:
 		for i in range(current_points.size()):
-			current_points[i] = to_local(target_points[i])
-			current_points[i] = current_points[i].lerp(target_points[i], 0.2)
-	
-	$Line2D.points = current_points
-	$Line2D.width = 12 + 2 * sin(time * 5)
+			var local_target = to_local(target_points[i])
+			current_points[i] = current_points[i].lerp(local_target, 0.2)
 
+	Rayline.points = current_points
+	Rayline.width = ray_width + 2 * sin(time * 5)
+
+	update_prisms()
 	update_receivers()
+
+func _ready():
+	add_to_group("light_ray")

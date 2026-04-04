@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dq3qou8ltweud"]
+
+[ext_resource type="Texture2D" uid="uid://bfcnh176vm8e6" path="res://icon.svg" id="1_7aki8"]
+[ext_resource type="Script" uid="uid://ii7281vae5pk" path="res://objects/prism.gd" id="1_efuxx"]
+[ext_resource type="PackedScene" uid="uid://bvdgt1uhcgyor" path="res://light/laser.tscn" id="2_tbp3w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_efuxx"]
+size = Vector2(128, 48)
+
+[node name="Prism" type="RigidBody2D" unique_id=1285278337 node_paths=PackedStringArray("RedLight", "GreenLight", "BlueLight") groups=["prism"]]
+gravity_scale = 0.0
+script = ExtResource("1_efuxx")
+RedLight = NodePath("Red")
+GreenLight = NodePath("Green")
+BlueLight = NodePath("Blue")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=616973736]
+scale = Vector2(1, 0.36000007)
+texture = ExtResource("1_7aki8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=715871478]
+shape = SubResource("RectangleShape2D_efuxx")
+debug_color = Color(0.9470386, 3.657937e-06, 0.58729684, 0.41960785)
+
+[node name="Red" parent="." unique_id=1321595995 instance=ExtResource("2_tbp3w")]
+position = Vector2(-47.000004, -38.000004)
+rotation = -2.6179938
+
+[node name="Green" parent="." unique_id=618817048 instance=ExtResource("2_tbp3w")]
+position = Vector2(0, -46)
+rotation = -1.5707964
+
+[node name="Blue" parent="." unique_id=1936477929 instance=ExtResource("2_tbp3w")]
+position = Vector2(46, -40)
+rotation = -0.5235988
