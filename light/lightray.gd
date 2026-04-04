@@ -9,9 +9,12 @@ extends Node2D
 @export var max_bounces := 5
 @export var ray_width := 12
 @export var ray_color := Color(1, 1, 1)
+@export var ray_color_name := "White"
 
 signal hit_prism(prism)
 signal prism_cleared
+signal hit_receiver(receiver)
+signal receiver_cleared(receiver)
 
 var current_points = []
 var target_points = []
@@ -51,12 +54,10 @@ func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
 			Particles.direction = -current_dir
 			break
 		elif result and result.collider.is_in_group("receiver"):
-			print("Receiver hit")
 			points.append(result.position)
 			if not hit_receivers.has(result.collider):
 				hit_receivers.append(result.collider)
-				emit_signal("hit_prism", result.collider)
-				result.collider.activate()
+				result.collider.receive_hit(ray_color_name)
 			Particles.global_position = result.position
 			Particles.emitting = true
 			Particles.direction = -current_dir
@@ -72,12 +73,12 @@ func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
 
 			if side_dot > 0.9: 
 				if prism.has_method("receive_hit"):
+					Particles.emitting = false
 					prism.receive_hit()
 			else:
 				Particles.global_position = result.position
 				Particles.emitting = true
 				Particles.direction = -current_dir
-				print("Hit a side other than the bottom")
 			
 			points.append(result.position)
 		else:
@@ -95,23 +96,21 @@ func _draw():
 
 func update_receivers():
 	get_tree().call_group("receiver", "deactivate")
-	for r in hit_receivers:
-		r.activate()
 func update_prisms():
 	get_tree().call_group("prism", "deactivate_prism")
 
 func activate():
 	active = true
-	print("Light ON")
 
 func deactivate():
+	Particles.emitting = false
 	active = false
-	print("Light OFF")
 
 func _process(delta: float) -> void:
 	time += delta
 	hit_receivers.clear()
 	if not active:
+		Particles.emitting = false
 		Rayline.points = []
 		return
 	
@@ -128,13 +127,18 @@ func _process(delta: float) -> void:
 	else:
 		for i in range(current_points.size()):
 			var local_target = to_local(target_points[i])
-			current_points[i] = current_points[i].lerp(local_target, 0.2)
+			if current_points[i].distance_to(local_target) > 100:
+				current_points[i] = local_target
+			else :
+				current_points[i] = current_points[i].lerp(local_target, 0.5)
 
 	Rayline.points = current_points
 	Rayline.width = ray_width + 2 * sin(time * 5)
 
 	update_prisms()
-	update_receivers()
 
 func _ready():
 	add_to_group("light_ray")
+	Rayline.width = ray_width
+	Rayline.modulate = ray_color
+	Particles.modulate = ray_color

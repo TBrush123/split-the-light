@@ -8,6 +8,7 @@
 size = Vector2(128, 48)
 
 [node name="Prism" type="RigidBody2D" unique_id=1285278337 node_paths=PackedStringArray("RedLight", "GreenLight", "BlueLight") groups=["prism"]]
+position = Vector2(1, 0)
 gravity_scale = 0.0
 script = ExtResource("1_efuxx")
 RedLight = NodePath("Red")
@@ -25,11 +26,17 @@ debug_color = Color(0.9470386, 3.657937e-06, 0.58729684, 0.41960785)
 [node name="Red" parent="." unique_id=1321595995 instance=ExtResource("2_tbp3w")]
 position = Vector2(-47.000004, -38.000004)
 rotation = -2.6179938
+ray_color = Color(0.9999997, 0.13131744, 0.2249974, 1)
+ray_color_name = "red"
 
 [node name="Green" parent="." unique_id=618817048 instance=ExtResource("2_tbp3w")]
 position = Vector2(0, -46)
 rotation = -1.5707964
+ray_color = Color(0, 1, 0, 1)
+ray_color_name = "green"
 
 [node name="Blue" parent="." unique_id=1936477929 instance=ExtResource("2_tbp3w")]
 position = Vector2(46, -40)
 rotation = -0.5235988
+ray_color = Color(0, 0, 1, 1)
+ray_color_name = "blue"
