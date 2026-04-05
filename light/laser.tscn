@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bvdgt1uhcgyor"]
 
 [ext_resource type="Script" uid="uid://kyeuje0b3phw" path="res://light/lightray.gd" id="1_ehnwn"]
-[ext_resource type="Texture2D" uid="uid://bq0tmtkqib22c" path="res://assets/particle.png" id="2_a8vku"]
+[ext_resource type="Texture2D" uid="uid://bi3ksbcqyu72u" path="res://assets/particle2.png" id="2_a8vku"]
 
 [node name="Laser" type="Node2D" unique_id=1321595995 node_paths=PackedStringArray("Particles", "Rayline")]
 script = ExtResource("1_ehnwn")

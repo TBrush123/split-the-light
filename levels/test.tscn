@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bvdgt1uhcgyor" path="res://light/laser.tscn" id="5_eudka"]
 [ext_resource type="PackedScene" uid="uid://dq3qou8ltweud" path="res://objects/prism.tscn" id="6_qtvpr"]
 [ext_resource type="PackedScene" path="res://walls.tscn" id="7_drwxn"]
+[ext_resource type="PackedScene" uid="uid://b6jd8i07javss" path="res://UI/HUD.tscn" id="8_2grjb"]
 
 [sub_resource type="Environment" id="Environment_u45fp"]
 background_mode = 3
@@ -63,3 +64,5 @@ rotation = 0.9844192
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=723982076]
 environment = SubResource("Environment_u45fp")
+
+[node name="HUD" parent="." unique_id=48611243 instance=ExtResource("8_2grjb")]

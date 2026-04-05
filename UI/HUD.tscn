@@ -1,30 +1,56 @@
 [gd_scene format=3 uid="uid://b6jd8i07javss"]
 
 [ext_resource type="Script" uid="uid://c7a80y7fun0a4" path="res://UI/hud.gd" id="1_ijstf"]
-[ext_resource type="Script" uid="uid://cractaiupkqmv" path="res://theme_setup.gd" id="2_4n7mi"]
 [ext_resource type="Shader" uid="uid://bdsh8sdpydxsj" path="res://UI/glass_panel.gdshader" id="3_4n7mi"]
-[ext_resource type="Script" uid="uid://dedttwb15gf06" path="res://UI/level_display.gd" id="4_f2wx0"]
-[ext_resource type="Script" uid="uid://b0fgr3bqynnc4" path="res://UI/icon_button.gd" id="5_gppie"]
 
 [sub_resource type="Theme" id="Theme_uk570"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4n7mi"]
 shader = ExtResource("3_4n7mi")
-shader_parameter/opacity = 0.15
 shader_parameter/tint = Color(0.3, 0.4, 0.8, 1)
-shader_parameter/edge_brightness = 0.3
+shader_parameter/edge_glow = 0.25
+
+[sub_resource type="LabelSettings" id="LabelSettings_f2wx0"]
+font_color = Color(0.78431374, 0.9098039, 1, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 0.53333336)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gppie"]
-bg_color = Color(1, 1, 1, 0.0627451)
-border_color = Color(1, 1, 1, 0.13333334)
+bg_color = Color(1, 1, 1, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.1882353)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ptjp"]
-bg_color = Color(1, 1, 1, 0.1254902)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f2wx0"]
+bg_color = Color(1, 1, 1, 0.08235294)
+border_width_left = 1
 border_width_top = 1
+border_width_right = 1
 border_width_bottom = 1
-border_color = Color(1, 1, 1, 0.09411765)
+border_color = Color(0.2901961, 0.9411765, 1, 0.3764706)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 10.0
+expand_margin_top = 10.0
+expand_margin_right = 10.0
+expand_margin_bottom = 10.0
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_gppie"]
+color = Color(1, 1, 1, 0.1254902)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 2
+vertical = true
+
+[sub_resource type="Theme" id="Theme_f2wx0"]
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=48611243]
 script = ExtResource("1_ijstf")
@@ -37,82 +63,129 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_uk570")
-script = ExtResource("2_4n7mi")
 metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect" type="ColorRect" parent="MainHUD" unique_id=1577918895]
+[node name="TopBar" type="ColorRect" parent="MainHUD" unique_id=1577918895]
 material = SubResource("ShaderMaterial_4n7mi")
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
+anchor_bottom = 0.08024691
 grow_horizontal = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainHUD/ColorRect" unique_id=817591400]
-layout_mode = 0
-offset_top = 1.0
-offset_right = 1152.0
-offset_bottom = 24.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MainHUD/TopBar" unique_id=817591400]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="LevelLabel" type="Label" parent="MainHUD/ColorRect/HBoxContainer" unique_id=1556391402]
+[node name="MarginContainer" type="MarginContainer" parent="MainHUD/TopBar/HBoxContainer" unique_id=855922833]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="LevelLabel" type="Label" parent="MainHUD/TopBar/HBoxContainer/MarginContainer" unique_id=1556391402]
 layout_mode = 2
 text = "Level: X"
-script = ExtResource("4_f2wx0")
+label_settings = SubResource("LabelSettings_f2wx0")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Control" type="Control" parent="MainHUD/ColorRect/HBoxContainer" unique_id=1595495864]
+[node name="Control" type="Control" parent="MainHUD/TopBar/HBoxContainer" unique_id=1595495864]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RestartButton" type="Button" parent="MainHUD/ColorRect/HBoxContainer" unique_id=1673787130]
+[node name="MarginContainer2" type="MarginContainer" parent="MainHUD/TopBar/HBoxContainer" unique_id=390043185]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="RestartButton" type="Button" parent="MainHUD/TopBar/HBoxContainer/MarginContainer2" unique_id=1673787130]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.78431374, 0.9098039, 1, 1)
+theme_override_constants/align_to_largest_stylebox = 1
+theme_override_constants/line_spacing = -1
 theme_override_styles/normal = SubResource("StyleBoxFlat_gppie")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ptjp")
 text = "Restart"
-script = ExtResource("5_gppie")
-icon_type = "restart"
 
-[node name="PauseButton" type="Button" parent="MainHUD/ColorRect/HBoxContainer" unique_id=1902836341]
+[node name="VSeparator" type="VSeparator" parent="MainHUD/TopBar/HBoxContainer" unique_id=247676809]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_constants/separation = 15
+theme_override_styles/separator = SubResource("StyleBoxLine_gppie")
+
+[node name="MarginContainer3" type="MarginContainer" parent="MainHUD/TopBar/HBoxContainer" unique_id=504189150]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="PauseButton" type="Button" parent="MainHUD/TopBar/HBoxContainer/MarginContainer3" unique_id=1902836341]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.78431374, 0.9098039, 1, 1)
+theme_override_constants/align_to_largest_stylebox = 1
 theme_override_styles/normal = SubResource("StyleBoxFlat_gppie")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ptjp")
 text = "Pause"
-script = ExtResource("5_gppie")
 
-[node name="BottomBar" type="PanelContainer" parent="MainHUD" unique_id=140377389]
+[node name="BottomBar" type="ColorRect" parent="MainHUD" unique_id=1569208719]
+material = SubResource("ShaderMaterial_4n7mi")
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -23.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_f2wx0")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainHUD/BottomBar" unique_id=2085338264]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="HintButton" type="Button" parent="MainHUD/BottomBar/HBoxContainer" unique_id=763921823]
+[node name="MarginContainer2" type="MarginContainer" parent="MainHUD/BottomBar/HBoxContainer" unique_id=712723459]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme = SubResource("Theme_f2wx0")
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="HintButton" type="Button" parent="MainHUD/BottomBar/HBoxContainer/MarginContainer2" unique_id=763921823]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.78431374, 0.9098039, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_gppie")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ptjp")
 text = "Hint?"
-script = ExtResource("5_gppie")
-icon_type = "hint"
 
-[node name="Control" type="Control" parent="MainHUD/BottomBar/HBoxContainer" unique_id=524752582]
+[node name="Spacer" type="Control" parent="MainHUD/BottomBar/HBoxContainer" unique_id=524752582]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="NextButton" type="Button" parent="MainHUD/BottomBar/HBoxContainer" unique_id=1536236857]
+[node name="MarginContainer" type="MarginContainer" parent="MainHUD/BottomBar/HBoxContainer" unique_id=1076111469]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.6666667)
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="NextButton" type="Button" parent="MainHUD/BottomBar/HBoxContainer/MarginContainer" unique_id=1536236857]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.78431374, 0.9098039, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_gppie")
 theme_override_styles/hover = SubResource("StyleBoxFlat_2ptjp")
 text = "Next"
-script = ExtResource("5_gppie")
-icon_type = "next"

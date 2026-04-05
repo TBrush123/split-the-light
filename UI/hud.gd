@@ -5,7 +5,7 @@ signal pause_pressed
 signal hint_pressed
 signal next_pressed
 
-@onready var level_label: Label = $HUD/TopBar/HBox/LevelLabel
+@onready var level_label: Label = $MainHUD/TopBar/HBoxContainer/MarginContainer/LevelLabel
 
 func set_level(n: int):
     level_label.text = "Level %d" % n
