@@ -6,7 +6,7 @@ extends Node2D
 @export var active := false
 
 @export_group("Ray Settings")
-@export var max_bounces := 5
+@export var max_bounces := 10
 @export var ray_width := 12
 @export var ray_color := Color(1, 1, 1)
 @export var ray_color_name := "White"
@@ -22,7 +22,7 @@ var time := 0.0
 var hit_receivers = []
 var hit_prisms = []
 
-func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 5):
+func cast_laser(origin: Vector2, direction: Vector2, max_bounces := 10):
 	var space = get_world_2d().direct_space_state
 	
 	var points = [origin]

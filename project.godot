@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Split the Light"
-run/main_scene="uid://x8k5u2y72v0"
+run/main_scene="uid://c06181a7cydbn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 

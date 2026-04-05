@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://c06181a7cydbn"]
+
+[ext_resource type="Script" uid="uid://bqrun1wb023lx" path="res://levels/level1.gd" id="1_61w3m"]
+[ext_resource type="PackedScene" uid="uid://dmhe7qgloqnyc" path="res://walls.tscn" id="1_sjb42"]
+[ext_resource type="PackedScene" uid="uid://bvdgt1uhcgyor" path="res://light/laser.tscn" id="3_pdpul"]
+[ext_resource type="PackedScene" uid="uid://xlyjxvrtc5ht" path="res://objects/mirror.tscn" id="4_8hd6v"]
+[ext_resource type="PackedScene" uid="uid://dpe5v8oeaxfqq" path="res://objects/light_reciever.tscn" id="5_045es"]
+
+[sub_resource type="Environment" id="Environment_61w3m"]
+background_mode = 3
+background_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+ambient_light_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 1.5
+glow_bloom = 0.3
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_energy = 8.43
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.1
+adjustment_saturation = 1.3
+
+[node name="Level1" type="Node2D" unique_id=854177021]
+script = ExtResource("1_61w3m")
+
+[node name="walls" parent="." unique_id=2029995915 instance=ExtResource("1_sjb42")]
+
+[node name="Laser" parent="." unique_id=1321595995 instance=ExtResource("3_pdpul")]
+position = Vector2(135, 120)
+active = true
+
+[node name="Mirror" parent="." unique_id=1823625752 instance=ExtResource("4_8hd6v")]
+position = Vector2(727, 209)
+
+[node name="LightReceiver" parent="." unique_id=1257106951 instance=ExtResource("5_045es")]
+position = Vector2(153, 551)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=318021456]
+environment = SubResource("Environment_61w3m")
