@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Split the Light"
-run/main_scene="uid://c06181a7cydbn"
+run/main_scene="uid://crs6r5y6a1037"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_height=752
 
 [physics]
 

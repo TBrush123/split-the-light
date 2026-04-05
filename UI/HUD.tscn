@@ -1,14 +1,8 @@
 [gd_scene format=3 uid="uid://b6jd8i07javss"]
 
 [ext_resource type="Script" uid="uid://c7a80y7fun0a4" path="res://UI/hud.gd" id="1_ijstf"]
-[ext_resource type="Shader" uid="uid://bdsh8sdpydxsj" path="res://UI/glass_panel.gdshader" id="3_4n7mi"]
 
 [sub_resource type="Theme" id="Theme_uk570"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4n7mi"]
-shader = ExtResource("3_4n7mi")
-shader_parameter/tint = Color(0.3, 0.4, 0.8, 1)
-shader_parameter/edge_glow = 0.25
 
 [sub_resource type="LabelSettings" id="LabelSettings_f2wx0"]
 font_color = Color(0.78431374, 0.9098039, 1, 1)
@@ -66,13 +60,13 @@ theme = SubResource("Theme_uk570")
 metadata/_edit_use_anchors_ = true
 
 [node name="TopBar" type="ColorRect" parent="MainHUD" unique_id=1577918895]
-material = SubResource("ShaderMaterial_4n7mi")
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.08024691
 grow_horizontal = 2
+color = Color(0.039215688, 0.16470589, 0.18039216, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainHUD/TopBar" unique_id=817591400]
@@ -138,7 +132,6 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_2ptjp")
 text = "Pause"
 
 [node name="BottomBar" type="ColorRect" parent="MainHUD" unique_id=1569208719]
-material = SubResource("ShaderMaterial_4n7mi")
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 1
 anchors_preset = 12
@@ -147,6 +140,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+color = Color(0.039215688, 0.16470589, 0.18039216, 1)
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MainHUD/BottomBar" unique_id=2085338264]
 layout_mode = 1
