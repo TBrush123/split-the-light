@@ -28,11 +28,11 @@ script = ExtResource("1_76ugp")
 
 [node name="Wall" parent="." unique_id=1110037336 instance=ExtResource("2_e8p81")]
 position = Vector2(460, 96.00001)
-rotation = 1.5688658
+rotation = 1.5707964
 
 [node name="Wall2" parent="." unique_id=1254159453 instance=ExtResource("2_e8p81")]
 position = Vector2(460, 246)
-rotation = 1.5688658
+rotation = 1.5707964
 
 [node name="Mirror" parent="." unique_id=1823625752 instance=ExtResource("3_55gdq")]
 position = Vector2(209.00002, 261.00003)

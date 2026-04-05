@@ -9,19 +9,19 @@ position = Vector2(75, 11)
 
 [node name="Wall17" parent="." unique_id=973290605 instance=ExtResource("1_xxkwp")]
 position = Vector2(10.000001, 96)
-rotation = 1.5698177
+rotation = 1.5707964
 
 [node name="Wall18" parent="." unique_id=1231487019 instance=ExtResource("1_xxkwp")]
 position = Vector2(10, 245)
-rotation = 1.5698177
+rotation = 1.5707964
 
 [node name="Wall19" parent="." unique_id=891961851 instance=ExtResource("1_xxkwp")]
 position = Vector2(10.000001, 395)
-rotation = 1.5698177
+rotation = 1.5707964
 
 [node name="Wall20" parent="." unique_id=436191064 instance=ExtResource("1_xxkwp")]
 position = Vector2(10.000001, 545.00006)
-rotation = 1.5698177
+rotation = 1.5707964
 
 [node name="Wall2" parent="." unique_id=954280059 instance=ExtResource("1_xxkwp")]
 position = Vector2(225, 11)
@@ -70,16 +70,16 @@ position = Vector2(1125, 630)
 
 [node name="Wall22" parent="." unique_id=1949125981 instance=ExtResource("1_xxkwp")]
 position = Vector2(1142, 97)
-rotation = 1.5698177
+rotation = 1.5707964
 
 [node name="Wall23" parent="." unique_id=1218776902 instance=ExtResource("1_xxkwp")]
 position = Vector2(1142, 246)
-rotation = 1.5698177
+rotation = 1.5707964
 
 [node name="Wall24" parent="." unique_id=1215322084 instance=ExtResource("1_xxkwp")]
 position = Vector2(1142, 396)
-rotation = 1.5698177
+rotation = 1.5707964
 
 [node name="Wall25" parent="." unique_id=1930685489 instance=ExtResource("1_xxkwp")]
 position = Vector2(1142, 546.00006)
-rotation = 1.5698177
+rotation = 1.5707964

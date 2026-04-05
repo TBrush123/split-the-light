@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://76plr8531ods"]
 
 [ext_resource type="PackedScene" uid="uid://dpe5v8oeaxfqq" path="res://objects/light_reciever.tscn" id="1_j0g86"]
+[ext_resource type="Script" uid="uid://dhhyow7rx7fk1" path="res://levels/level7.gd" id="1_jt2a3"]
 [ext_resource type="PackedScene" uid="uid://dmhe7qgloqnyc" path="res://walls.tscn" id="1_m0m81"]
 [ext_resource type="PackedScene" uid="uid://bvdgt1uhcgyor" path="res://light/laser.tscn" id="3_iqepm"]
 [ext_resource type="PackedScene" uid="uid://d0m7nwisvdij7" path="res://objects/wall.tscn" id="4_5jh5v"]
@@ -24,6 +25,7 @@ adjustment_contrast = 1.1
 adjustment_saturation = 1.3
 
 [node name="Level7" type="Node2D" unique_id=1902845375]
+script = ExtResource("1_jt2a3")
 
 [node name="LightReciever" parent="." unique_id=1257106951 instance=ExtResource("1_j0g86")]
 position = Vector2(1051, 93)
