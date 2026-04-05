@@ -8,7 +8,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_87plc"]
 radius = 25.0
 
-[node name="RigidBody2D" type="RigidBody2D" unique_id=1257106951 node_paths=PackedStringArray("lit_gem", "unlit_gem") groups=["receiver"]]
+[node name="LightReciever" type="RigidBody2D" unique_id=1257106951 node_paths=PackedStringArray("lit_gem", "unlit_gem") groups=["receiver"]]
 position = Vector2(0, 15)
 gravity_scale = 0.0
 script = ExtResource("1_sccfu")

@@ -19,6 +19,19 @@ BlueLight = NodePath("Blue")
 scale = Vector2(1, 0.36000007)
 texture = ExtResource("1_7aki8")
 
+[node name="Button" type="Button" parent="Sprite2D" unique_id=978065651]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_top = -0.021000002
+anchor_right = 1.0
+anchor_bottom = 1.0200001
+offset_left = -64.0
+offset_top = -63.978657
+offset_right = -64.0
+offset_bottom = -63.893356
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=715871478]
 shape = SubResource("RectangleShape2D_efuxx")
 debug_color = Color(0.9470386, 3.657937e-06, 0.58729684, 0.41960785)
@@ -40,3 +53,6 @@ position = Vector2(46, -40)
 rotation = -0.5235988
 ray_color = Color(0, 0, 1, 1)
 ray_color_name = "blue"
+
+[connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="." method="_on_button_button_up"]

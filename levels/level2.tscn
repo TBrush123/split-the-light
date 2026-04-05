@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://x8k5u2y72v0"]
+
+[ext_resource type="Script" uid="uid://dtnv0ycx5lwbt" path="res://levels/level2.gd" id="1_76ugp"]
+[ext_resource type="PackedScene" uid="uid://d0m7nwisvdij7" path="res://objects/wall.tscn" id="2_e8p81"]
+[ext_resource type="PackedScene" uid="uid://xlyjxvrtc5ht" path="res://objects/mirror.tscn" id="3_55gdq"]
+[ext_resource type="PackedScene" uid="uid://dpe5v8oeaxfqq" path="res://objects/light_reciever.tscn" id="4_crte6"]
+[ext_resource type="PackedScene" uid="uid://bvdgt1uhcgyor" path="res://light/laser.tscn" id="5_hq01p"]
+[ext_resource type="PackedScene" uid="uid://dmhe7qgloqnyc" path="res://walls.tscn" id="7_bcewn"]
+
+[sub_resource type="Environment" id="Environment_u45fp"]
+background_mode = 3
+background_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+ambient_light_color = Color(0.050980393, 0.050980393, 0.101960786, 1)
+glow_enabled = true
+glow_intensity = 0.2
+glow_strength = 1.5
+glow_bloom = 0.3
+glow_blend_mode = 0
+fog_mode = 1
+fog_light_energy = 8.43
+fog_density = 1.0
+adjustment_enabled = true
+adjustment_contrast = 1.1
+adjustment_saturation = 1.3
+
+[node name="Test" type="Node2D" unique_id=1263500416]
+script = ExtResource("1_76ugp")
+
+[node name="Wall" parent="." unique_id=1110037336 instance=ExtResource("2_e8p81")]
+position = Vector2(460, 96.00001)
+rotation = 1.5707964
+
+[node name="Wall2" parent="." unique_id=1254159453 instance=ExtResource("2_e8p81")]
+position = Vector2(460, 246)
+rotation = 1.5707964
+
+[node name="Mirror" parent="." unique_id=1823625752 instance=ExtResource("3_55gdq")]
+position = Vector2(209.00002, 261.00003)
+rotation = 3.527281
+
+[node name="Mirror2" parent="." unique_id=169471480 instance=ExtResource("3_55gdq")]
+position = Vector2(383, 105)
+rotation = 1.2394667
+
+[node name="Mirror3" parent="." unique_id=709488274 instance=ExtResource("3_55gdq")]
+position = Vector2(294.99997, 195.99998)
+rotation = 2.4711437
+
+[node name="LightReceiver" parent="." unique_id=1257106951 instance=ExtResource("4_crte6")]
+position = Vector2(808, 65)
+
+[node name="Laser" parent="." unique_id=1321595995 instance=ExtResource("5_hq01p")]
+position = Vector2(108, 96)
+active = true
+
+[node name="walls" parent="." unique_id=2029995915 instance=ExtResource("7_bcewn")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=723982076]
+environment = SubResource("Environment_u45fp")
+
+[node name="HUD" parent="." unique_id=48611243 instance=ExtResource("8_2grjb")]
